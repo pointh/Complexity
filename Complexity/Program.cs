@@ -51,6 +51,21 @@ namespace Complexity
                 }
             }
         }
+
+        static void VytiskniSudaNenulovaCislaNaDiagonaleLepsiVerze(int[,] sachovnice) // O(n)
+        {
+            if (sachovnice.GetLength(0) != sachovnice.GetLength(1))
+                throw new ArgumentException("Vstupní pole musí být čtvercové!");
+
+            for (int i = 0; i < sachovnice.GetLength(0); i++) // n krát
+            {
+               if (sachovnice[i, i] != 0 && sachovnice[i, i] % 2 == 0)
+               {
+                   Console.WriteLine(sachovnice[i, i]);
+               }
+            }
+        }
+
         static void Main() // O(n*n) - nejhorší případ je složitosti O(n*n)
         {
             int[] hodyKostkou = { 1, 1, 3, 5, 1, 2, 1 };
@@ -59,6 +74,8 @@ namespace Complexity
                                 { 2, 0, 1 }, 
                                 { 3, 1, 3 } };
             VytiskniSudaNenulovaCislaNaDiagonale(iArr2D);
+            VytiskniSudaNenulovaCislaNaDiagonaleLepsiVerze(iArr2D);
+
         }
     }
 }
